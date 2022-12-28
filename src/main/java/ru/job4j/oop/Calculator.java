@@ -5,19 +5,23 @@ public class Calculator {
     private static int x = 5;
 
     public static int sum(int y) {
+
         return x + y;
     }
 
     public static int minus(int y) {
-        return x - y;
+
+        return y - x;
     }
 
     public int multiply(int a) {
+
         return x * a;
     }
 
     public int divide(int a) {
-        return x / a;
+
+        return a / x;
     }
 
     public int sumAllOperation(int a) {
@@ -28,7 +32,7 @@ public class Calculator {
         Calculator calculator = new Calculator();
         int rsl = calculator.multiply(5);
         System.out.println(rsl);
-        System.out.println(minus(2));
+        System.out.println(minus(12));
         System.out.println(calculator.divide(15));
         System.out.println(calculator.sumAllOperation(3));
     }
