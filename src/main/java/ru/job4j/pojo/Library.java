@@ -2,11 +2,10 @@ package ru.job4j.pojo;
 
 public class Library {
     public static void main(String[] args) {
-        Book cleanCode = new Book();
+        Book cleanCode = new Book("Clean code");
         Book designPatterns = new Book();
         Book thePragmaticProgrammer = new Book();
         Book codeComplete = new Book();
-        cleanCode.setName("Clean code");
         Book[] books = new  Book[4];
         books[0] = cleanCode;
         books[1] = designPatterns;
@@ -22,7 +21,7 @@ public class Library {
             System.out.println(books[index].getName());
         }
         for (int index = 0; index < books.length; index++) {
-            if (books[index].equals(cleanCode)) {
+            if ("Clean code".equals(books[index].getName())) {
                 System.out.println(books[index].getName());
             }
         }
