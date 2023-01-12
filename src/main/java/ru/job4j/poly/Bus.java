@@ -1,6 +1,9 @@
 package ru.job4j.poly;
 
 public class Bus implements Transport {
+
+    private static int anInt;
+
     @Override
     public void go() {
 
@@ -15,4 +18,5 @@ public class Bus implements Transport {
     public double refuel(double fuel) {
         return 0;
     }
+
 }
