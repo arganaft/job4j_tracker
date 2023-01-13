@@ -4,12 +4,12 @@ public class Bus implements Transport, Vehicle {
 
     @Override
     public void go() {
-
+        System.out.println("Автобус двигается соскоростью 80 км/ч");
     }
 
     @Override
     public void passengers(int number) {
-
+        System.out.println("Вместимость автобуса 60 человек");
     }
 
     @Override
