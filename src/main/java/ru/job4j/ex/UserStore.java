@@ -33,8 +33,8 @@ public class UserStore {
                     new User("Petr Arsentev", true)
             };
             User user = findUser(users, "Petr Arsentev");
-            if (!Objects.equals(user, null)) {
-                validate(user);
+            if (!Objects.equals(user, null) && validate(user)) {
+                System.out.println("This user has an access");
             }
         } catch (UserInvalidException iv) {
             iv.printStackTrace();
