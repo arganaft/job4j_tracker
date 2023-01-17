@@ -36,8 +36,10 @@ public class UserStore {
             if (!Objects.equals(user, null) && validate(user)) {
                 System.out.println("This user has an access");
             }
-        } catch (UserNotFoundException iv) {
+        } catch (UserInvalidException iv) {
             iv.printStackTrace();
+        } catch (UserNotFoundException nf) {
+            nf.printStackTrace();
         }
     }
 }
