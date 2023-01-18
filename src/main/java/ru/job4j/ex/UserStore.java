@@ -1,17 +1,15 @@
 package ru.job4j.ex;
-
-import java.util.Objects;
-
 public class UserStore {
 
     public static User findUser(User[] users, String login) throws UserNotFoundException {
         User findUser = null;
-        for (User user: users) {
+        for (User user : users) {
             if (login.equals(user.getUsername())) {
                 findUser = user;
+                break;
             }
         }
-        if (Objects.equals(findUser, null)) {
+        if (findUser == null) {
             throw new UserNotFoundException("User " + login + " not found");
         }
         return findUser;
@@ -33,7 +31,7 @@ public class UserStore {
                     new User("Petr Arsentev", true)
             };
             User user = findUser(users, "Petr Arsentev");
-            if (!Objects.equals(user, null) && validate(user)) {
+            if (user != null && validate(user)) {
                 System.out.println("This user has an access");
             }
         } catch (UserInvalidException iv) {
