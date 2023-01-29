@@ -9,44 +9,34 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
         char[] passwordArray = password.toCharArray();
-        boolean flag = false;
+        boolean isUpperCase = false,
+                isLowerCase = false,
+                isDigit = false,
+                isLetterOrDigit = false;
         for (char i : passwordArray) {
             if (Character.isUpperCase(i)) {
-                flag = true;
-                break;
+                isUpperCase = true;
+            }
+            if (Character.isLowerCase(i)) {
+                isLowerCase = true;
+            }
+            if (Character.isDigit(i)) {
+                isDigit = true;
+            }
+            if (!Character.isLetterOrDigit(i)) {
+                isLetterOrDigit = true;
             }
         }
-        if (!flag) {
+        if (!isUpperCase) {
             throw new IllegalArgumentException("Password should contain at least one uppercase letter");
         }
-        flag = false;
-        for (char i : passwordArray) {
-            if (Character.isLowerCase(i)) {
-                flag = true;
-                break;
-            }
-        }
-        if (!flag) {
+        if (!isLowerCase) {
             throw new IllegalArgumentException("Password should contain at least one lowercase letter");
         }
-        flag = false;
-        for (char i : passwordArray) {
-            if (Character.isDigit(i)) {
-                flag = true;
-                break;
-            }
-        }
-        if (!flag) {
+        if (!isDigit) {
             throw new IllegalArgumentException("Password should contain at least one figure");
         }
-        flag = false;
-        for (char i : passwordArray) {
-            if (!Character.isLetterOrDigit(i)) {
-                flag = true;
-                break;
-            }
-        }
-        if (!flag) {
+        if (!isLetterOrDigit) {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
 
