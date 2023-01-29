@@ -40,12 +40,11 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
 
-        if (password.toLowerCase().contains("qwerty")
-        || password.toLowerCase().contains("12345")
-        || password.toLowerCase().contains("password")
-        || password.toLowerCase().contains("admin")
-        || password.toLowerCase().contains("user")) {
-            throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
+        String[] substrings = {"qwerty", "12345", "password", "admin", "user"};
+        for (String i : substrings) {
+            if (password.toLowerCase().contains(i)) {
+                throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
+            }
         }
 
         return password;
