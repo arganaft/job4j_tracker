@@ -1,6 +1,8 @@
 package ru.job4j.early;
 
 public class PasswordValidator {
+    final static String[] SUBSTRINGS = {"qwerty", "12345", "password", "admin", "user"};
+
     public static String validate(String password) {
         if (password == null) {
             throw new IllegalArgumentException("Password can't be null");
@@ -9,10 +11,10 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
         char[] passwordArray = password.toCharArray();
-        boolean isUpperCase = false,
-                isLowerCase = false,
-                isDigit = false,
-                isLetterOrDigit = false;
+        boolean isUpperCase = false;
+        boolean isLowerCase = false;
+        boolean isDigit = false;
+        boolean isLetterOrDigit = false;
         for (char i : passwordArray) {
             if (Character.isUpperCase(i)) {
                 isUpperCase = true;
@@ -25,6 +27,9 @@ public class PasswordValidator {
             }
             if (!Character.isLetterOrDigit(i)) {
                 isLetterOrDigit = true;
+            }
+            if (isUpperCase & isLowerCase & isDigit & isLetterOrDigit) {
+                break;
             }
         }
         if (!isUpperCase) {
@@ -40,13 +45,11 @@ public class PasswordValidator {
             throw new IllegalArgumentException("Password should contain at least one special symbol");
         }
 
-        String[] substrings = {"qwerty", "12345", "password", "admin", "user"};
-        for (String i : substrings) {
-            if (password.toLowerCase().contains(i)) {
+        for (String substring : SUBSTRINGS) {
+            if (password.toLowerCase().contains(substring)) {
                 throw new IllegalArgumentException("Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
             }
         }
-
         return password;
     }
 
