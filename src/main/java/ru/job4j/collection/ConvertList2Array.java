@@ -11,12 +11,9 @@ public class ConvertList2Array {
         for (Integer num : list) {
             array[row][cell] = num;
             cell++;
-            if (cell > cells - 1) {
+            if (cell == cells) {
                 row++;
                 cell = 0;
-            }
-            if (row > groups - 1) {
-                break;
             }
         }
         return array;
