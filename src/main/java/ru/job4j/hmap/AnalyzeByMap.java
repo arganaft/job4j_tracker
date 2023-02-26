@@ -42,28 +42,6 @@ public class AnalyzeByMap {
             averageSubject.add(new Label(entry.getKey(), entry.getValue() / amont));
         }
         return averageSubject;
-
-//        // На случай если у студентов разное количество предметов и они не общие для всех.
-//        Map<String, ArrayList<Integer>> subjects = new LinkedHashMap<>();
-//        for (Pupil pupil : pupils) {
-//            for (Subject subject : pupil.subjects()) {
-//                if (!subjects.containsKey(subject.name())) {
-//                    subjects.put(subject.name(), new ArrayList<>(Arrays.asList(subject.score())));
-//                } else {
-//                    subjects.get(subject.name()).add(subject.score());
-//                }
-//            }
-//        }
-//        List<Label> averageSubject = new ArrayList<>();
-//        double summ = 0;
-//        for (Map.Entry<String, ArrayList<Integer>> entry : subjects.entrySet()) {
-//            for (Integer score : entry.getValue()) {
-//                summ += score;
-//            }
-//            averageSubject.add(new Label(entry.getKey(), summ / entry.getValue().size()));
-//            summ = 0;
-//        }
-//        return averageSubject;
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
