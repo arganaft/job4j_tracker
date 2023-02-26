@@ -54,6 +54,7 @@ public class AnalyzeByMap {
             bestStudents.add(new Label(pupil.name(), summ));
             summ = 0;
         }
+
         return bestStudents.last();
     }
 
