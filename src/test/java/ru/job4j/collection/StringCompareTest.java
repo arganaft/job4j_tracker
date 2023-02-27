@@ -53,4 +53,34 @@ public class StringCompareTest {
         );
         assertThat(rst).isLessThan(0);
     }
+
+    @Test
+    public void secondNumberOfLeftLessThanRightShouldBeNegative() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "e1-mar",
+                "e2-mar"
+        );
+        assertThat(rst).isLessThan(0);
+    }
+
+    @Test
+    public void firstNullOfLeftLessThanRightShouldBeNegative() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "",
+                "1"
+        );
+        assertThat(rst).isLessThan(0);
+    }
+
+    @Test
+    public void sixCharOfLeftGreaterThanRightShouldBeNegative() {
+        StringCompare compare = new StringCompare();
+        int rst = compare.compare(
+                "$)+<@!*8G",
+                "$)+<@ *4R"
+        );
+        assertThat(rst).isGreaterThan(0);
+    }
 }
