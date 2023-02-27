@@ -62,11 +62,7 @@ public class AnalyzeByMap {
         Map<String, Integer> mapSubject = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                if (!mapSubject.containsKey(subject.name())) {
-                    mapSubject.put(subject.name(), subject.score());
-                } else {
-                    mapSubject.put(subject.name(), mapSubject.get(subject.name()) + subject.score());
-                }
+                mapSubject.put(subject.name(), mapSubject.getOrDefault(subject.name(), 0) + subject.score());
             }
         }
         TreeSet<Label> bestSubjects = new TreeSet<>();
