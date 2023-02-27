@@ -2,11 +2,13 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackerTest {
     @Test
@@ -107,5 +109,27 @@ public class TrackerTest {
         boolean result = tracker.delete(1000);
         assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
         assertThat(result).isFalse();
+    }
+
+    @Test
+    public void whenItemAscByNameSort() {
+        List<Item> items = Arrays.asList(new Item("D fourth"),
+                new Item("A first"),
+                new Item("C third"),
+                new Item("B second"));
+        List<Item> expected = Arrays.asList(items.get(1), items.get(3), items.get(2), items.get(0));
+        Collections.sort(items, new ItemAscByName());
+        assertThat(items).containsExactlyElementsOf(expected);
+    }
+
+    @Test
+    public void whenItemDescByNameSort() {
+        List<Item> items = Arrays.asList(new Item("D fourth"),
+                new Item("A first"),
+                new Item("C third"),
+                new Item("B second"));
+        List<Item> expected = Arrays.asList(items.get(0), items.get(2), items.get(3), items.get(1));
+        Collections.sort(items, new ItemDescByName());
+        assertThat(items).containsExactlyElementsOf(expected);
     }
 }
