@@ -29,11 +29,7 @@ public class AnalyzeByMap {
         Map<String, Integer> subjects = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                if (subjects.containsKey(subject.name())) {
-                    subjects.put(subject.name(), subjects.get(subject.name()) + subject.score());
-                } else {
-                    subjects.put(subject.name(), subject.score());
-                }
+                subjects.put(subject.name(), subjects.getOrDefault(subject.name(), 0) + subject.score());
             }
         }
         List<Label> averageSubject = new ArrayList<>();
