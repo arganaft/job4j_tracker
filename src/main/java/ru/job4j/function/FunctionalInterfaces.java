@@ -7,9 +7,6 @@ public class FunctionalInterfaces {
     public static void main(String[] args) {
         Map<Integer, String> map = new HashMap<>();
         BiConsumer<Integer, String> biCon = (key, value) -> map.put(key, value);
-        /*
-            Замените вставку элементов в карту на использование BiConsumer, он уже объявлен, требуется его реализовать.
-         */
         biCon.accept(1, "one");
         biCon.accept(2, "two");
         biCon.accept(3, "three");
@@ -17,22 +14,14 @@ public class FunctionalInterfaces {
         biCon.accept(5, "five");
         biCon.accept(6, "six");
         biCon.accept(7, "seven");
-
         BiPredicate<Integer, String> biPred = (key, value) -> key % 2 == 0 || value.length() == 4;
         for (Integer i : map.keySet()) {
-            /*
-                Замените проверку в if() на использование BiPredicate, он объявлен выше, требуется его реализовать.
-             */
             if (biPred.test(i, map.get(i))) {
                 System.out.println("key: " + i + " value: " + map.get(i));
             }
         }
-        /*
-            Заменить создание ArrayList из значений Map на Supplier, объявлен ниже, требуется его реализовать.
-         */
         Supplier<Collection<String>> sup = () -> map.values();
         List<String> strings = new ArrayList<>(sup.get());
-
         Consumer<String> con = str -> System.out.println(str);
         Function<String, String> func = str -> str.toUpperCase();
         for (String s : strings) {
