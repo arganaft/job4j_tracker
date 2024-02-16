@@ -4,14 +4,14 @@ import java.util.List;
 
 public final class SingleTracker {
 
-    private static Tracker tracker = new Tracker();
+    private static MemTracker tracker = new MemTracker();
 
     private SingleTracker() {
     }
 
-    public static Tracker getInstance() {
+    public static MemTracker getInstance() {
         if (tracker == null) {
-            tracker = new Tracker();
+            tracker = new MemTracker();
         }
         return tracker;
     }
