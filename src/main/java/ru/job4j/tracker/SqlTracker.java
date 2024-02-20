@@ -77,16 +77,14 @@ public class SqlTracker implements Store {
     }
 
     @Override
-    public boolean delete(int id) {
-        int rowsAffected = 0;
+    public void delete(int id) {
         try (PreparedStatement statement =
                      connection.prepareStatement("DELETE FROM items WHERE id = ?")) {
             statement.setInt(1, id);
-            rowsAffected = statement.executeUpdate();
+            statement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return rowsAffected > 0;
     }
 
     @Override

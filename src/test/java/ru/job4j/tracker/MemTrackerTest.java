@@ -102,16 +102,6 @@ public class MemTrackerTest {
     }
 
     @Test
-    public void whenDeleteItemIsNotSuccessful() {
-        MemTracker tracker = new MemTracker();
-        Item item = new Item("Bug");
-        tracker.add(item);
-        boolean result = tracker.delete(1000);
-        assertThat(tracker.findById(item.getId()).getName()).isEqualTo("Bug");
-        assertThat(result).isFalse();
-    }
-
-    @Test
     public void whenItemAscByNameSort() {
         List<Item> items = Arrays.asList(new Item("D fourth"),
                 new Item("A first"),
