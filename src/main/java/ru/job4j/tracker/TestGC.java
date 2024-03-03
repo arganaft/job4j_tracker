@@ -33,8 +33,8 @@ public class TestGC implements UserAction {
                     tracker.delete(integer);
                 }
             long deleteEndTime = System.currentTimeMillis();
-            out.println((j + 1) + ". Добавление: " + (addEndTime - addStartTime) +
-                    " Удаление: " + (deleteEndTime - deleteStartTime));
+            out.println((j + 1) + ". Добавление: " + (addEndTime - addStartTime)
+                    + " Удаление: " + (deleteEndTime - deleteStartTime));
         }
 
         out.println("Добавлено заявок: " + count);
